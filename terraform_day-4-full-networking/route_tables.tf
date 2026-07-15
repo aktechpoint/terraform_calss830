@@ -1,5 +1,5 @@
 resource "aws_route_table" "public_route_table" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpctest.id
   tags = {
     Name = "public_route_table"
   }
@@ -10,17 +10,17 @@ resource "aws_route_table" "public_route_table" {
 }
 
 resource "aws_route_table_association" "public_subnet1_association" {
-  subnet_id      = aws_subnet.subnet1.id
+  subnet_id      = aws_subnet.sub_pub1.id
   route_table_id = aws_route_table.public_route_table.id
 }
 resource "aws_route_table_association" "public_subnet2_association" {
-  subnet_id      = aws_subnet.subnet2.id
+  subnet_id      = aws_subnet.sub_pub2.id
   route_table_id = aws_route_table.public_route_table.id
 }
 
 
 resource "aws_route_table" "private_route_table" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpctest.id
   tags = {
     Name = "private_route_table"
   }
@@ -31,18 +31,18 @@ resource "aws_route_table" "private_route_table" {
 }
 
 resource "aws_route_table_association" "private_subnet1_association" {
-  subnet_id      = aws_subnet.subnet3.id
+  subnet_id      = aws_subnet.sub_priv1.id
   route_table_id = aws_route_table.private_route_table.id
 }
 
 resource "aws_route_table_association" "private_subnet2_association" {
-  subnet_id      = aws_subnet.subnet4.id
+  subnet_id      = aws_subnet.sub_priv2.id
   route_table_id = aws_route_table.private_route_table.id
   
 }
 
 resource "aws_route_table_association" "private_subnet3_association" {
-  subnet_id      = aws_subnet.subnet5.id
+  subnet_id      = aws_subnet.sub_priv3.id
   route_table_id = aws_route_table.private_route_table.id
   
 }
